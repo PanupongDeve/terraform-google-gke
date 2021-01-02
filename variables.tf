@@ -18,12 +18,12 @@ variable "cluster_name" {
   default = "terraform-gke-cluster"
 }
 
-variable "k8s_subnet_name" {
-  default = "cluster-subnet"
+variable "cluster_service_account" {
+  default = "k8s-cluster-admin@seed-iam.iam.gserviceaccount.com"
 }
+
 
 locals {
   zones = ["${var.region}-a", "${var.region}-b", "${var.region}-c"]
-  ip_range_pods = "${var.k8s_subnet_name}-pods"
-  ip_range_services = "${var.k8s_subnet_name}-services"
+  node_locations = "${var.region}-a"
 }
